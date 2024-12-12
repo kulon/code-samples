@@ -12,8 +12,8 @@
     <name>openapi-generator-sample</name>
 
     <properties>
-        <!-- Just changing the version from 7.6.0 to 7.10.0 will break the Open API code generation -->
-        <openapi-generator-maven-plugin-version>7.6.0</openapi-generator-maven-plugin-version>
+        <!-- Just changing the version from 7.8.0 to 7.9.0 will break the Open API code generation -->
+        <openapi-generator-maven-plugin-version>7.8.0</openapi-generator-maven-plugin-version>
 
         <jdk.version>21</jdk.version>
         <camel-version>4.8.0.redhat-00022</camel-version>

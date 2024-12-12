@@ -18,7 +18,7 @@ import jakarta.annotation.Generated;
  * Request
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", comments = "Generator version: 7.6.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", comments = "Generator version: 7.8.0")
 public class Request implements Serializable {
 
   private static final long serialVersionUID = 1L;
@@ -37,7 +37,7 @@ public class Request implements Serializable {
   /**
    * Get referenceNumber
    * @return referenceNumber
-  */
+   */
   
   @Schema(name = "referenceNumber", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("referenceNumber")
@@ -57,7 +57,7 @@ public class Request implements Serializable {
   /**
    * Get documentNumber
    * @return documentNumber
-  */
+   */
   
   @Schema(name = "documentNumber", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("documentNumber")
@@ -77,7 +77,7 @@ public class Request implements Serializable {
   /**
    * Get stockNumber
    * @return stockNumber
-  */
+   */
   
   @Schema(name = "stockNumber", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("stockNumber")

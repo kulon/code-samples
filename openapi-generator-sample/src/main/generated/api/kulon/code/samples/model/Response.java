@@ -18,7 +18,7 @@ import jakarta.annotation.Generated;
  * Response
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", comments = "Generator version: 7.6.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", comments = "Generator version: 7.8.0")
 public class Response implements Serializable {
 
   private static final long serialVersionUID = 1L;
@@ -33,7 +33,7 @@ public class Response implements Serializable {
   /**
    * Get message
    * @return message
-  */
+   */
   
   @Schema(name = "message", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("message")
