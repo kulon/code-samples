@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>kulon.code.samples</groupId>
+    <artifactId>openapi-generator-sample</artifactId>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
+
+    <name>openapi-generator-sample</name>
+
+    <properties>
+        <!-- Just changing the version from 7.6.0 to 7.10.0 will break the Open API code generation -->
+        <openapi-generator-maven-plugin-version>7.6.0</openapi-generator-maven-plugin-version>
+
+        <jdk.version>21</jdk.version>
+        <camel-version>4.8.0.redhat-00022</camel-version>
+        <maven-compiler-plugin-version>3.13.0</maven-compiler-plugin-version>
+        <build-helper-maven-plugin-version>3.6.0</build-helper-maven-plugin-version>
+        <generated-code-directory>src/main/generated</generated-code-directory>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.camel.springboot</groupId>
+            <artifactId>camel-openapi-java-starter</artifactId>
+            <version>${camel-version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin-version}</version>
+                <configuration>
+                    <release>${jdk.version}</release>
+                    <source>${jdk.version}</source>
+                    <target>${jdk.version}</target>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>${build-helper-maven-plugin-version}</version>
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>${project.basedir}/${generated-code-directory}/api</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Generate classes from OpenAPI specs -->
+            <plugin>
+                <groupId>org.openapitools</groupId>
+                <artifactId>openapi-generator-maven-plugin</artifactId>
+                <version>${openapi-generator-maven-plugin-version}</version>
+                <executions>
+                    <execution>
+                        <id>generate-sources-openapi</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <generatorName>java-camel</generatorName>
+                            <inputSpec>${project.basedir}/src/main/resources/sample-api.yaml</inputSpec>
+                            <output>${project.basedir}/${generated-code-directory}</output>
+                            <apiPackage>kulon.code.samples.api</apiPackage>
+                            <modelPackage>kulon.code.samples.model</modelPackage>
+                            <configOptions>
+                                <useJakartaEe>true</useJakartaEe>
+                                <dateLibrary>java8</dateLibrary>
+                                <generatePom>false</generatePom>
+                                <generatedConstructorWithRequiredArgs>false</generatedConstructorWithRequiredArgs>
+                                <hideGenerationTimestamp>true</hideGenerationTimestamp>
+                                <interfaceOnly>true</interfaceOnly>
+                                <serializableModel>true</serializableModel>
+                                <sourceFolder>api</sourceFolder>
+                                <withXml>false</withXml>
+                                <openApiNullable>false</openApiNullable>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
